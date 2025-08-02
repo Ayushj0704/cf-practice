@@ -1,0 +1,47 @@
+// Problem: Bear and Big Brother
+// Link: https://codeforces.com/problemset/problem/791/A
+// Author: Ayush Kumar Jha
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int limak, bob;
+    cin >> limak >> bob;
+
+    int years = 0;
+
+    // Limak triples, Bob doubles each year until Limak becomes strictly greater
+    while (limak <= bob) {
+        limak *= 3;
+        bob *= 2;
+        years++;
+    }
+
+    cout << years << endl;
+
+    return 0;
+}
+
+// Problem: Vasya the Hipster
+// Link: https://codeforces.com/problemset/problem/581/A
+// Author: Ayush Kumar Jha
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int red, blue;
+    cin >> red >> blue;
+
+    // Number of different color pairs
+    int differentPairs = min(red, blue);
+
+    // Remaining socks to make same color pairs
+    int samePairs = abs(red - blue) / 2;
+
+    cout << differentPairs << " " << samePairs << endl;
+
+    return 0;
+}
