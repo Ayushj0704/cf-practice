@@ -1,0 +1,68 @@
+problem : https://codeforces.com/problemset/problem/1890/A
+
+#include<bits/stdc++.h>
+using namespace std;
+ 
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    
+    int t;
+    cin >> t;
+    
+    while(t--){
+        int n;
+        cin >> n;
+        vector<int> a(n);
+        
+        for(int i = 0; i < n; i++){
+            cin >> a[i];
+        }
+        
+        // For n = 2, always possible
+        if(n == 2){
+            cout << "Yes\n";
+            continue;
+        }
+        
+        // Count frequency of each element
+        map<int, int> freq;
+        for(int x : a){
+            freq[x]++;
+        }
+        
+        // For n >= 3, we need exactly 2 distinct values
+        if(freq.size() > 2){
+            cout << "No\n";
+            continue;
+        }
+        
+        if(freq.size() == 1){
+            // All elements are the same - always works
+            cout << "Yes\n";
+            continue;
+        }
+        
+        // freq.size() == 2
+        // Check if the frequencies match the required pattern
+        vector<int> counts;
+        for(auto& p : freq){
+            counts.push_back(p.second);
+        }
+        
+        // For odd positions: (n+1)/2 elements
+        // For even positions: n/2 elements
+        int odd_positions = (n + 1) / 2;
+        int even_positions = n / 2;
+        
+        // Check if the two frequencies match the required counts
+        if((counts[0] == odd_positions && counts[1] == even_positions) ||
+           (counts[0] == even_positions && counts[1] == odd_positions)){
+            cout << "Yes\n";
+        } else {
+            cout << "No\n";
+        }
+    }
+    
+    retu
